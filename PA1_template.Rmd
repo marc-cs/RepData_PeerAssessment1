@@ -72,10 +72,10 @@ numberMissingValues
 ## Filling in all of the missing values in the dataset using the mean
 ## Create a new dataset that is equal to the original dataset but with the missing data filled in.
 activityFull <- activity
-index<-which(is.na(activityFull$steps))
-l<-length(index)
-averageSteps<-with(activityFull,tapply(steps,date,mean,na.rm=TRUE))
-na<-mean(averageSteps,na.rm = TRUE)
+index <- which(is.na(activityFull$steps))
+l <- length(index)
+averageSteps <- with(activityFull,tapply(steps,date,mean,na.rm=TRUE))
+na <- mean(averageSteps,na.rm = TRUE)
 for (i in 1:l) {
         activityFull[index[i],1]<-na
 }
@@ -103,8 +103,8 @@ library(dplyr)
 
 ## Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
 
-activityNew<- mutate(activity, day = ifelse(weekdays(activity$date) == "Saturday" | weekdays(activity$date) == "Sunday", "weekend", "weekday"))
-activityNew$day<-as.factor(activityNew$day)
+activityNew <- mutate(activity, day = ifelse(weekdays(activity$date) == "Saturday" | weekdays(activity$date) == "Sunday", "weekend", "weekday"))
+activityNew$day <- as.factor(activityNew$day)
 str(activityNew)
 
 # Plot
